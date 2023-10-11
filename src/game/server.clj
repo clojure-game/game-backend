@@ -40,10 +40,8 @@
                    :body    (str (translate-game response-fn))})]
     (cond (= (:uri request) "/create-game")
           (respond (reset! game-state (create-game)))
-
           (= (:uri request) "/move")
           (respond (swap! game-state move (:player keyworded-map) (:direction keyworded-map)))
-
           (= (:uri request) "/place-bomb")
           (respond (swap! game-state place-bomb (:player keyworded-map)))
           (= (:uri request) "/explode-bomb")
